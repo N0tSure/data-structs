@@ -7,28 +7,28 @@ void printList(node* list);
 
 int main()
 {
-    char* foes[4] = { "bar", "baz", "qux", "quux" };
-    node* list = create("foo");
+	int foes_size = 5;
+    char* foes[5] = { "foo", "bar", "baz", "qux", "quux" };
     
-    for (int i = 0; i < 4; i++)
-    {
-        list = insert(list, foes[i]);
-    }
+	create(foes[0]);
+	for (int i = 1; i < foes_size; i++)
+	{
+		insert(foes[i]);
+	}
+	
+	printf("Contains foo: %s\n", contains(foes[0]) ? "yes" : "no");
+	printf("Contains baz: %s\n", contains("baz") ? "yes" : "no");
+	printf("Contains qux before remove: %s\n", contains("qux") ? "yes" : "no");
+	printf("Contains corge: %s\n", contains("corge") ? "yes" : "no");
+	printf("Contains NULL: %s\n", contains(NULL) ? "yes" : "no");
+	
+	char *s;
+	while ((s = removeLast()) != NULL)
+		printf("%s\n", s);
+	
+	printf("Contains after clear foo: %s\n", contains(foes[0]) ? "yes" : "no");
+	printf("Contains after clear baz: %s\n", contains("baz") ? "yes" : "no");
+	printf("Contains after clear baz: %s\n", contains("quux") ? "yes" : "no");
     
-    printList(list);
-    list = removeFirst(list);
-    printList(list);
     return 0;
-}
-
-void printList(node* list)
-{
-    node* trav = list;
-    while (trav != NULL)
-    {
-        printf("%s ", trav->value);
-        trav = trav->next;
-    }
-    
-    printf("\n");
 }
