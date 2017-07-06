@@ -1,5 +1,5 @@
-CC = clang
-CFLAGS = -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror
+CC = gcc
+CFLAGS = -ggdb3 -O0 -std=c11 -Wall -Werror
 TEST_RUNNER = test
 HDRS = object.h linked_list.h
 LINS = 
