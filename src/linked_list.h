@@ -1,5 +1,6 @@
 /**
- * LinkedList interface declaration
+ * LinkedList interface declaration, storage must
+ * store globally
  */
 
 #include <stdbool.h>
@@ -18,24 +19,38 @@ node;
 /**
  * Creates new linked list
  */
-node* create(TYPE value);
+void create(TYPE value);
 
 /**
  * Check that given list contains element
  */
-bool contains(node* list, TYPE value);
+bool contains(TYPE value);
 
 /**
  * Insert new value to the list
  */
-node* insert(node* list, TYPE value);
+void insert(TYPE value);
 
 /**
- * Remove first value from list
+ * Remove first element from list
+ * and return it
  */
-node* removeFirst(node* list);
+TYPE removeFirst();
+
+/**
+ * Remove first element from list
+ * and return it
+ */
+TYPE removeLast();
+
+/**
+ * Search and remove node with current
+ * element, return true if val founded 
+ * and removed
+ */
+bool removeElement(TYPE val);
 
 /**
  * Remove all nodes from list
  */
-void removeAll(node* list);
+void clear();

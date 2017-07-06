@@ -7,21 +7,22 @@
 #include "object.h"
 #include "linked_list.h"
 
-node* create(TYPE value)
+node* _storage;
+
+void create(TYPE value)
 {
-    node* res = malloc(sizeof(node));
-    if (res != NULL)
+    _storage = malloc(sizeof(node));
+    if (_storage != NULL)
     {
-        res->value = value;
-        res->next = NULL;
+        _storage->value = value;
+        _storage->next = NULL;
     }
     
-    return res;
 }
 
-bool contains(node* list, TYPE value)
+bool contains(TYPE value)
 {
-    node* tmp = list;
+    node* tmp = _storage;
     while (tmp != NULL)
     {
         if (equal(tmp->value, value))
@@ -35,37 +36,81 @@ bool contains(node* list, TYPE value)
     return false;
 }
 
-node* insert(node* list, TYPE value)
+void insert(TYPE value)
 {
     node* new_head = malloc(sizeof(node));
     if (new_head != NULL)
     {
         new_head->value = value;
-        new_head->next = list;
-        return new_head;
+        new_head->next = _storage;
+        _storage = new_head;
     }
-    else
-    {
-        return list;
-    }
+	
 }
 
-node* removeFirst(node* list)
+TYPE removeFirst()
 {
-    if (list != NULL)
+	TYPE res = NULL;
+    if (_storage != NULL)
     {
-        node* head = list->next;
-        free(list);
-        return head;
+		node* old_head = _storage;
+		res = _storage->value;
+        _storage = _storage->next;
+        free(old_head);
     }
     
-    return list;
+    return res;
 }
 
-void removeAll(node* list)
+TYPE removeLast()
 {
-    while(list != NULL)
-    {
-        list = removeFirst(list);
-    }
+	TYPE res = NULL;
+	node* trav = _storage;
+	node* prev = NULL;
+	if (trav != NULL)
+	{
+		while (trav->next != NULL)
+		{
+			prev = trav;
+			trav = trav->next;
+		}
+		res = trav->value;
+		if (prev != NULL)
+			prev->next = NULL;
+		free(trav);
+	}
+	
+	return res;
+}
+
+bool removeElement(TYPE val)
+{
+	node* prev = NULL;
+	node* trav = _storage;
+	while (trav != NULL)
+	{
+		if (equal(trav->value, val))
+		{
+			if (prev != NULL)
+			{
+				prev->next = trav->next;
+			}
+			free(trav);
+			return true;
+		}
+		prev = trav;
+		trav = trav->next;
+	}
+	
+	return false;
+}
+
+void clear()
+{
+    while (_storage != NULL)
+	{
+		node* tmp = _storage;
+		_storage = _storage->next;
+		free(tmp);
+	}
 }
