@@ -65,21 +65,31 @@ TYPE removeFirst()
 TYPE removeLast()
 {
 	TYPE res = NULL;
-	node* trav = _storage;
-	node* prev = NULL;
-	if (trav != NULL)
-	{
-		while (trav->next != NULL)
-		{
-			prev = trav;
-			trav = trav->next;
-		}
-		res = trav->value;
-		if (prev != NULL)
-			prev->next = NULL;
-		free(trav);
-	}
-	
+    if (_storage != NULL)
+    {
+        if (_storage->next == NULL)
+        {
+            res = _storage->value;
+            free(_storage);
+            _storage = NULL;
+        }
+        else
+        {
+            node* trav = _storage;
+            node* prev = NULL;
+            while (trav->next != NULL)
+            {
+                prev = trav;
+                trav = trav->next;
+                
+            }
+            res = trav->value;
+            if (prev != NULL)
+            prev->next = NULL;
+            free(trav);
+        }
+    }
+        
 	return res;
 }
 
