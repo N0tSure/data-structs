@@ -22,13 +22,12 @@ int main()
 	printf("Contains corge: %s\n", contains("corge") ? "yes" : "no");
 	printf("Contains NULL: %s\n", contains(NULL) ? "yes" : "no");
 	
-	char *s;
-	while ((s = removeLast()) != NULL)
-		printf("%s\n", s);
+	removeElement("foo");
+	removeElement("quux");
 	
 	printf("Contains after clear foo: %s\n", contains(foes[0]) ? "yes" : "no");
 	printf("Contains after clear baz: %s\n", contains("baz") ? "yes" : "no");
-	printf("Contains after clear baz: %s\n", contains("quux") ? "yes" : "no");
+	printf("Contains after clear quux: %s\n", contains("quux") ? "yes" : "no");
     
     return 0;
 }
