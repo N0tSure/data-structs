@@ -1,7 +1,13 @@
 #include "stack.h"
 #include "linked_list.h"
 
-node* push(node* stack, TYPE item)
+
+void push(TYPE item)
 {
-	
+	insert(item);
+}
+
+TYPE pop()
+{
+	return removeFirst();
 }

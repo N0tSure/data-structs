@@ -1,16 +1,16 @@
 /**
- * Stack interface
+ * Stack interface declaration
  */
 
-#include "linked_list.h"
+#define TYPE char*
 
 /**
- * Save item into stack
+ * Pop item on top stack
  */
-node* push(node* stack, TYPE item);
+void push(TYPE item);
 
 /**
- * Remove element on top of the stack
+ * Remove element from top of the stack
  * and return it
  */
-node* pop(node* stack);
+TYPE pop();
