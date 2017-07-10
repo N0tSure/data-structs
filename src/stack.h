@@ -2,7 +2,7 @@
  * Stack interface declaration
  */
 
-#define TYPE char*
+#include "linked_list.h"
 
 /**
  * Pop item on top stack
