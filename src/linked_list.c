@@ -20,12 +20,12 @@ void create(TYPE value)
     
 }
 
-bool contains(TYPE value)
+bool containsElement(TYPE element, node* list)
 {
-    node* tmp = _storage;
+    node* tmp = list;
     while (tmp != NULL)
     {
-        if (equal(tmp->value, value))
+        if (equal(tmp->value, element))
         {
             return true;
         }
@@ -36,16 +36,17 @@ bool contains(TYPE value)
     return false;
 }
 
-void insert(TYPE value)
+node* insert(TYPE element, node* list)
 {
     node* new_head = malloc(sizeof(node));
     if (new_head != NULL)
     {
-        new_head->value = value;
-        new_head->next = _storage;
-        _storage = new_head;
+        new_head->value = element;
+        new_head->next = list;
+		list = new_head;
     }
 	
+	return list;
 }
 
 TYPE removeFirst()
@@ -93,13 +94,13 @@ TYPE removeLast()
 	return res;
 }
 
-bool removeElement(TYPE val)
+bool removeElement(TYPE element, node* list)
 {
 	node* prev = NULL;
-	node* trav = _storage;
+	node* trav = list;
 	while (trav != NULL)
 	{
-		if (equal(trav->value, val))
+		if (equal(trav->value, element))
 		{
 			if (prev != NULL)
 			{
