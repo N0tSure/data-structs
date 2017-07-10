@@ -22,7 +22,7 @@ node;
 /**
  * Creates new linked list
  */
-void create(TYPE value);
+node* create(TYPE value);
 
 /**
  * Check that given list contains element
@@ -39,13 +39,13 @@ node* insert(TYPE element, node* list);
  * Remove first element from list
  * and return it
  */
-TYPE removeFirst();
+node* removeFirst(node* list);
 
 /**
  * Remove first element from list
  * and return it
  */
-TYPE removeLast();
+node* removeLast(node* list);
 
 /**
  * Search and remove node with current
@@ -57,6 +57,6 @@ bool removeElement(TYPE element, node* list);
 /**
  * Remove all nodes from list
  */
-void clear();
+void clear(node* list);
 
 #endif

@@ -15,9 +15,11 @@ int main(int argc, char* argv[])
 		}
 		printf("\n");
 		
-		char s[10];
-		scanf("%s", s);
-		printf("%s : %c\n", s, removeElement(s, list) ? 'y' : 'n');
+		// char s[10];
+		// scanf("%s", s);
+		// printf("%s : %c\n", s, removeElement(s, list) ? 'y' : 'n');
+		clear(list);
+		list = NULL;
 	}
 	
 	iterator(list);

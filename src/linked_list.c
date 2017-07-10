@@ -7,17 +7,16 @@
 #include "object.h"
 #include "linked_list.h"
 
-node* _storage;
-
-void create(TYPE value)
+node* create(TYPE value)
 {
-    _storage = malloc(sizeof(node));
-    if (_storage != NULL)
+    node* result = malloc(sizeof(node));
+    if (result != NULL)
     {
-        _storage->value = value;
-        _storage->next = NULL;
+        result->value = value;
+        result->next = NULL;
     }
     
+    return result;
 }
 
 bool containsElement(TYPE element, node* list)
@@ -49,49 +48,47 @@ node* insert(TYPE element, node* list)
 	return list;
 }
 
-TYPE removeFirst()
+node* removeFirst(node* list)
 {
-	TYPE res = NULL;
-    if (_storage != NULL)
+    if (list != NULL)
     {
-		node* old_head = _storage;
-		res = _storage->value;
-        _storage = _storage->next;
+		node* old_head = list;
+        list = list->next;
         free(old_head);
     }
     
-    return res;
+    return list;
 }
 
-TYPE removeLast()
+node* removeLast(node* list)
 {
-	TYPE res = NULL;
-    if (_storage != NULL)
+    if (list != NULL)
     {
-        if (_storage->next == NULL)
+        if (list->next == NULL)
         {
-            res = _storage->value;
-            free(_storage);
-            _storage = NULL;
+            free(list);
+            list = NULL;
         }
         else
         {
-            node* trav = _storage;
+            node* last = list;
             node* prev = NULL;
-            while (trav->next != NULL)
+            
+            while (last->next != NULL)
             {
-                prev = trav;
-                trav = trav->next;
+                prev = last;
+                last = last->next;
                 
             }
-            res = trav->value;
+
             if (prev != NULL)
-            prev->next = NULL;
-            free(trav);
+                prev->next = NULL;
+
+            free(last);
         }
     }
         
-	return res;
+	return list;
 }
 
 bool removeElement(TYPE element, node* list)
@@ -116,12 +113,12 @@ bool removeElement(TYPE element, node* list)
 	return false;
 }
 
-void clear()
+void clear(node* list)
 {
-    while (_storage != NULL)
+    while (list != NULL)
 	{
-		node* tmp = _storage;
-		_storage = _storage->next;
+		node* tmp = list;
+		list = list->next;
 		free(tmp);
 	}
 }
