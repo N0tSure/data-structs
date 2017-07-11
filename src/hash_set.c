@@ -37,13 +37,36 @@ bool add(TYPE item)
 	}
 	int index = hashcode(item) % B_SIZE;
 	
-	if (_buckets[index] != NULL && !containsElement(item, _buckets[index]))
+	if (!containsElement(item, _buckets[index]))
 	{
 		_buckets[index] = insert(item, _buckets[index]);
 		return true;
 	}
 	
 	return false;
+}
+
+bool removeItem(TYPE item)
+{
+	if (_is_initialized && item != NULL)
+	{
+		int index = hashcode(item) % B_SIZE;
+		return removeElement(item, _buckets[index]);
+	}
+	
+	return false;
+}
+
+void removeAll()
+{
+	for(int i = 0; i < B_SIZE; i++)
+	{
+		if(_buckets[i] != NULL)
+		{
+			clear(_buckets[i]);
+			_buckets[i] = NULL;
+		}
+	}
 }
 
 void _init_()

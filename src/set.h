@@ -24,7 +24,7 @@ bool add(TYPE item);
  * Remove item from the set, if set 
  * contain this item. Else do nothing
  */
-void removeItem(TYPE item);
+bool removeItem(TYPE item);
 
 /**
  * Remove all items from set if it contains any

@@ -12,10 +12,28 @@ int main(int argc, char* argv[])
 		}
 		printf("\n");
 		
-		char s[10];
-		scanf("%s", s);
+		for (int i = 1; i < argc; i++)
+		{
+			printf("before '%s' present: %s\n", argv[i], contains(argv[i]) ? "yes" : "no");
+		}
 		
-		printf("'%s' present: %s", s, contains(s) ? "yes" : "no");
+		printf("\n");
+		printf("\n");
+		
+		char* fo[3] = { "foo", "bar", "baz" };
+		for (int i = 1; i < argc; i++)
+		{
+			printf("before '%s' present: %s\n", fo[i % 3], contains(fo[i % 3]) ? "yes" : "no");
+		}
+		
+		printf("\n");
+		printf("\n");
+		removeAll();
+		
+		for (int i = 1; i < argc; i++)
+		{
+			printf("after '%s' present: %s\n", argv[i], contains(argv[i]) ? "yes" : "no");
+		}
 	}
 	
 	
