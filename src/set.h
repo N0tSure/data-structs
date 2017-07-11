@@ -18,7 +18,7 @@ bool contains(TYPE item);
  * already contain this one. Otherwise
  * do nothing
  */
-void add(TYPE item);
+bool add(TYPE item);
 
 /**
  * Remove item from the set, if set 

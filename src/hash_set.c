@@ -12,25 +12,38 @@
 #include "object.h"
 #include "linked_list.h"
 
+void _init_();
+
 node* _buckets[B_SIZE];
 bool _is_initialized = false;
 
 bool contains(TYPE item)
 {
-	if (_is_initialized)
+	if (_is_initialized && item != NULL)
 	{
 		int index = hashcode(item) % B_SIZE;
-		return _buckets[index] == NULL;
+		
+		return _buckets[index] != NULL && containsElement(item, _buckets[index]);
 	}
-	else
-	{
-		return false;
-	}
+	
+	return false;
 }
 
-void add(TYPE item)
+bool add(TYPE item)
 {
+	if(!_is_initialized)
+	{
+		_init_();
+	}
+	int index = hashcode(item) % B_SIZE;
 	
+	if (_buckets[index] != NULL && !containsElement(item, _buckets[index]))
+	{
+		_buckets[index] = insert(item, _buckets[index]);
+		return true;
+	}
+	
+	return false;
 }
 
 void _init_()
