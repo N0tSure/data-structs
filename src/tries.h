@@ -22,6 +22,9 @@ typedef struct _tries
 	struct _tries* children[KEYS];
 } tries;
 
+/**
+ * Creates new tries node
+ */
 tries* create_tries();
 
 /**
