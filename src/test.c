@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "tries.h"
 
 int main(int argc, char* argv[])
@@ -21,10 +22,10 @@ int main(int argc, char* argv[])
         
         remove_all(root);
         
-        for (int i = 1; i < argc; i++)
-        {
-            printf("%s ", is_present(root, argv[i], 0, strlen(argv[i])) ? argv[i] : "");
-        }
+        // for (int i = 1; i < argc; i++)
+        // {
+        //     printf("%s ", is_present(root, argv[i], 0, strlen(argv[i])) ? argv[i] : "?");
+        // }
         
 	}
 	
@@ -32,4 +33,5 @@ int main(int argc, char* argv[])
 	printf("\n");
 
     return 0;
+
 }

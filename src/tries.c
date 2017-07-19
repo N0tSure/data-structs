@@ -1,9 +1,10 @@
 /**
  * Implementation of tries
  */
-#include <stdio.h>
-#include "tries.h"
+
 #include <stdlib.h>
+#include <ctype.h>
+#include "tries.h"
 
 tries* _new_node();
 int _index(char c);
@@ -60,12 +61,10 @@ void remove_all(tries* root)
     {
         for (int i = 0; i < KEYS; i++)
         {
-            printf("into for %d\n", root->children[i] != NULL);
             if (root->children[i] != NULL)
             {
                 remove_all(root->children[i]);
                 root->children[i] = NULL;
-                printf("remove %d\n", i);
             }
         }
     }
@@ -92,7 +91,7 @@ int _index(char c)
 {
 	int result;
 	if (c != '\'')
-		result = c - 65;
+		result = tolower(c) - 97;
 	else
 		result = 26;
 
