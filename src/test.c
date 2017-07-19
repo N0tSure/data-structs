@@ -1,39 +1,31 @@
 #include <stdio.h>
-#include "set.h"
-#include "iterator.h"
+#include <string.h>
+#include "tries.h"
 
 int main(int argc, char* argv[])
 {
 	if (argc > 1) {
+        tries* root = create_tries();
 		for (int i = 1; i < argc; i++)
 		{
-			add(argv[i]);
+			add_child(root, argv[i], 0, strlen(argv[i]));
 			printf("%s ", argv[i]);
 		}
 		printf("\n");
 		
 		for (int i = 1; i < argc; i++)
-		{
-			printf("before '%s' present: %s\n", argv[i], contains(argv[i]) ? "yes" : "no");
-		}
-		
-		printf("\n");
-		printf("\n");
-		
-		char* fo[3] = { "foo", "bar", "baz" };
-		for (int i = 1; i < argc; i++)
-		{
-			printf("before '%s' present: %s\n", fo[i % 3], contains(fo[i % 3]) ? "yes" : "no");
-		}
-		
-		printf("\n");
-		printf("\n");
-		removeAll();
-		
-		for (int i = 1; i < argc; i++)
-		{
-			printf("after '%s' present: %s\n", argv[i], contains(argv[i]) ? "yes" : "no");
-		}
+        {
+            printf("%s ", is_present(root, argv[i], 0, strlen(argv[i])) ? argv[i] : "");
+        }
+        printf("\n");
+        
+        remove_all(root);
+        
+        for (int i = 1; i < argc; i++)
+        {
+            printf("%s ", is_present(root, argv[i], 0, strlen(argv[i])) ? argv[i] : "");
+        }
+        
 	}
 	
 	

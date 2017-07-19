@@ -22,6 +22,8 @@ typedef struct _tries
 	struct _tries* children[KEYS];
 } tries;
 
+tries* create_tries();
+
 /**
  * Adds item into trie
  */
@@ -35,4 +37,4 @@ bool is_present(tries* root, TYPE word, int pos, int len);
 /**
  * Remove all items from tries
  */
-void clear(tries* root);
+void remove_all(tries* root);
