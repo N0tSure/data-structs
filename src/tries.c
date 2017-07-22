@@ -57,9 +57,7 @@ bool is_present(tries* root, TYPE word, int pos, int len)
 
 void remove_all(tries* root)
 {
-    if (!root->is_leaf)
-    {
-        for (int i = 0; i < KEYS; i++)
+    for (int i = 0; i < KEYS; i++)
         {
             if (root->children[i] != NULL)
             {
@@ -67,8 +65,7 @@ void remove_all(tries* root)
                 root->children[i] = NULL;
             }
         }
-    }
-    
+        
     free(root);
 }
 
