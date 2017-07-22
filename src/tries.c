@@ -30,7 +30,7 @@ void add_child(tries* root, TYPE word, int pos, int len)
 	}
 	else
 	{
-		root->is_leaf = true;
+		root->children[ind]->is_leaf = true;
 	}
 
 }
@@ -48,7 +48,7 @@ bool is_present(tries* root, TYPE word, int pos, int len)
         }
         else
         {
-            return root->is_leaf;
+            return root->children[ind]->is_leaf;
         }
     }
     
